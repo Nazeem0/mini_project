@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 2c-3.31 0-6 2.69-6 6v7h12v-7c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v5H8V8c0-2.21 1.79-4 4-4zm-4 15h8v2H8v-2zM4 17h16v2H4v-2zM12 9c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E">
+    <title>Railway Safety</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo-container">
+            <svg class="train-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-3.31 0-6 2.69-6 6v7h12v-7c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v5H8V8c0-2.21 1.79-4 4-4zm-4 15h8v2H8v-2zM4 17h16v2H4v-2zM12 9c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#fff"/></svg>
+            <a href="#/home" class="nav-brand">Railway Safety</a>
+        </div>
+        <div class="nav-links">
+            <a href="#/home" class="nav-item public-link">Home</a>
+            <a href="#/login" class="nav-item public-link">Login</a>
+            <a href="#/signup" class="nav-item public-link">Sign-Up</a>
+
+            <a href="#/dashboard" class="nav-item protected-link" style="display: none;">Dashboard</a>
+            <a href="#/sensors" class="nav-item protected-link" style="display: none;">Sensors</a>
+            <a href="#/history" class="nav-item protected-link" style="display: none;">History</a>
+            <span id="role-badge" class="nav-badge protected-link" style="display: none;"></span>
+            <button id="logout-btn" class="nav-btn protected-link" style="display: none;">Logout</button>
+        </div>
+    </nav>
+
+    <main id="app-container">
+
+        <section id="home-page" class="page-section active-page">
+            <div class="hero-content">
+                <h1 class="hero-title">Railway Safety Management System</h1>
+                <p class="hero-subtext">Ensuring secure crossings with real-time, automated monitoring.</p>
+                <div class="button-group">
+                    <a href="#/login" class="btn primary-btn">Secure Login</a>
+                    <a href="#features-section" class="btn secondary-btn" id="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="train-track-container">
+                <div class="train-animation">
+                    <div class="train-body"></div>
+                    <div class="train-window"></div>
+                    <div class="train-wheel wheel-1"></div>
+                    <div class="train-wheel wheel-2"></div>
+                </div>
+                <div class="track"></div>
+            </div>
+            
+            <div class="features-section" id="features-section">
+                <h2>Advanced Safety Features</h2>
+                <div class="feature-cards">
+                    <div class="card feature-card">
+                        <h3>Real-Time Monitoring System</h3>
+                        <p>Continuous data feed for immediate decision-making.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <h3>Automatic Gate Control</h3>
+                        <p>Intelligent, sensor-driven level crossing automation.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <h3>Instant Alerts</h3>
+                        <p>Critical notifications sent immediately to safety officers.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <h3>Activity Logging</h3>
+                        <p>Detailed history of all system events and officer actions.</p>
+                    </div>
+                </div>
+
+                <h3 class="tech-heading">Powered by Advanced Technology</h3>
+                <div class="tech-boxes">
+                    <div class="tech-box">ESP32 Microcontroller</div>
+                    <div class="tech-box">WebSocket Protocol</div>
+                    <div class="tech-box">Cloud Infrastructure</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup-page" class="page-section auth-page" style="display: none;">
+            <div class="auth-card signup-card">
+                <h2>Create Your Account</h2>
+                <form id="signup-form">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" placeholder="Email ID" required>
+                    
+                    <label class="role-label">Select Your Role</label>
+                    <div class="role-selection">
+                        <button type="button" class="role-btn" data-role="Government">
+                            <svg class="role-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7V12C2 16.5 12 22 12 22S22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Government Officer
+                        </button>
+                        <button type="button" class="role-btn" data-role="Railway Officer">
+                            <svg class="role-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 3H17V9H19V21H5V9H7V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 6H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7 21H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Railway Officer
+                        </button>
+                    </div>
+                    <input type="hidden" id="signup-role" value="">
+                    
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <button type="submit" class="btn primary-btn">Register</button>
+                    <p id="signup-message" class="auth-message"></p>
+                </form>
+                <p class="auth-link">Already have an account? <a href="#/login">Login here.</a></p>
+            </div>
+        </section>
+
+        <section id="login-page" class="page-section auth-page" style="display: none;">
+            <div class="auth-card login-card">
+                <h2>Secure Login</h2>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="example@rail.com or @gov.in" required>
+                    
+                    <label class="role-label">Select Your Role</label>
+                    <div class="role-selection">
+                        <button type="button" class="role-btn" data-role="Government">
+                            <svg class="role-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7V12C2 16.5 12 22 12 22S22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Government Officer
+                        </button>
+                        <button type="button" class="role-btn" data-role="Railway Officer">
+                            <svg class="role-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 3H17V9H19V21H5V9H7V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 6H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7 21H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Railway Officer
+                        </button>
+                    </div>
+                    <input type="hidden" id="login-role" value="">
+                    
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn primary-btn">Sign-In</button>
+                    <p id="login-message" class="auth-message"></p>
+                </form>
+                <p class="auth-link">New user? <a href="#/signup">Create an account.</a></p>
+            </div>
+        </section>
+
+        <section id="dashboard-page" class="page-section protected-page" style="display: none;">
+            
+            <!-- 1. BEAUTIFUL PROFILE HEADER -->
+            <div class="dashboard-header-card">
+                <div class="header-left">
+                    <div class="profile-avatar-large">
+                        <span id="avatar-initials">UN</span>
+                    </div>
+                    <div class="user-info">
+                        <h2 id="dash-user-name">Loading User...</h2>
+                        <div class="badges-row">
+                            <span id="dash-user-role" class="role-badge">Unknown Rank</span>
+                            <span id="dash-user-id" class="id-badge">ID: ----</span>
+                        </div>
+                        <p id="dash-user-email" class="user-email">loading@email.com</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="system-status">
+                        <div class="status-light pulse"></div>
+                        <span>SYSTEM ONLINE</span>
+                    </div>
+                    <div id="current-date" class="date-text"></div>
+                </div>
+            </div>
+
+            <!-- 2. MAIN GRID LAYOUT -->
+            <div class="dashboard-grid">
+                
+                <!-- LEFT: Operational Health -->
+                <div class="card dashboard-panel">
+                    <div class="panel-header">
+                        <h3><span class="icon">🛡️</span> System Health</h3>
+                        <!-- Note: Refresh button removed via CSS as requested previously -->
+                        <button class="btn-mini hover-effect" style="display:none;">Run Diagnostics</button>
+                    </div>
+                    
+                    <div class="checkup-list">
+                        <div class="checkup-item">
+                            <div class="item-text">
+                                <h4>Safety Logic Circuits</h4>
+                                <p>Automated Fail-safes</p>
+                            </div>
+                            <div class="status-pill success">Working</div>
+                        </div>
+
+                        <div class="checkup-item">
+                            <div class="item-text">
+                                <h4>Rail Track Sensors</h4>
+                                <p>Vibration Integrity</p>
+                            </div>
+                            <div class="status-pill success">Optimal</div>
+                        </div>
+
+                        <div class="checkup-item">
+                            <div class="item-text">
+                                <h4>Obstruction Scanner</h4>
+                                <p>Infrared/Ultrasonic</p>
+                            </div>
+                            <div class="status-pill success">Active</div>
+                        </div>
+
+                        <div class="checkup-item">
+                            <div class="item-text">
+                                <h4>Signal Lights (LED)</h4>
+                                <p>Visual Warning Arrays</p>
+                            </div>
+                            <div class="status-pill warning">Check Req.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Gate Control & Maintenance -->
+                <div class="dashboard-column-right">
+                    
+                    <!-- GATE CONTROL PANEL -->
+                    <div class="card dashboard-panel control-panel">
+                        <div class="panel-header">
+                            <h3><span class="icon">🚧</span> Gate Override</h3>
+                            <span class="status-label">MANUAL</span>
+                        </div>
+                        
+                        <p class="instruction-text">Use only during emergency maintenance.</p>
+                        
+                        <!-- The Gate Animation Container -->
+                        <div class="gate-visual-wrapper">
+                            <div class="gate-pole"></div>
+                            <div class="gate-bar" id="visual-gate-bar"></div>
+                        </div>
+
+                        <div class="gate-status-display">
+                            Current State: <span id="gate-status-text">CLOSED</span>
+                        </div>
+
+                        <div class="control-buttons-row">
+                            <button class="btn-control close-btn" id="btn-force-close">⛔ FORCE CLOSE</button>
+                            <button class="btn-control open-btn" id="btn-force-open">✅ FORCE OPEN</button>
+                        </div>
+                    </div>
+
+                    <!-- MAINTENANCE SCHEDULE (Replaces Live Feed) -->
+                    <div class="card dashboard-panel">
+                        <h3><span class="icon">📅</span> Maintenance Schedule</h3>
+                        <ul class="maintenance-list">
+                            <li class="m-item">
+                                <div class="m-date-box">
+                                    <span class="m-day">25</span>
+                                    <span class="m-month">NOV</span>
+                                </div>
+                                <div class="m-details">
+                                    <h4>Sensor Calibration</h4>
+                                    <span class="tag urgent">Urgent</span>
+                                </div>
+                            </li>
+                            <li class="m-item">
+                                <div class="m-date-box">
+                                    <span class="m-day">28</span>
+                                    <span class="m-month">NOV</span>
+                                </div>
+                                <div class="m-details">
+                                    <h4>Gate Hydraulic Check</h4>
+                                    <span class="tag pending">Pending</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="sensors-page" class="page-section protected-page" style="display: none;">
+            <h2>Sensor Monitoring</h2>
+            <!-- Refresh Button Removed Here -->
+            <div class="sensor-cards-container">
+                <div class="card sensor-card" id="sensor1-card">
+                    <span class="sensor-status-badge" id="sensor1-badge"></span>
+                    <h3>Sensor 1: Train Approach Detection</h3>
+                    <p>Current Distance: <span id="s1-distance"></span> cm</p>
+                    <p>Status: <span id="s1-status"></span></p>
+                    <p class="last-updated">Last Updated: <span id="s1-updated"></span></p>
+                </div>
+                <div class="card sensor-card" id="sensor2-card">
+                    <span class="sensor-status-badge" id="sensor2-badge"></span>
+                    <h3>Sensor 2: Track Obstruction Detection</h3>
+                    <p>Obstruction Status: <span id="s2-obstruction"></span></p>
+                    <p>Detection Range: <span id="s2-range"></span> cm</p>
+                    <p class="last-updated">Last Updated: <span id="s2-updated"></span></p>
+                </div>
+                <div class="card sensor-card" id="sensor3-card">
+                    <span class="sensor-status-badge" id="sensor3-badge"></span>
+                    <h3>Sensor 3: Train Departure Detection</h3>
+                    <p>Current Distance: <span id="s3-distance"></span> cm</p>
+                    <p>Status: <span id="s3-status"></span></p>
+                    <p class="last-updated">Last Updated: <span id="s3-updated"></span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="history-page" class="page-section protected-page" style="display: none;">
+            <h2>System Activity History</h2>
+            <div class="table-container card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Sensor Name</th>
+                            <th>Event Description</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
